@@ -1,6 +1,6 @@
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
-const camSec = document.getElementById('demos');
+const camSec = document.getElementById('camSec');
 const enableWebcamButton = document.getElementById('webcamButton');
 // Check if webcam access is supported.
 function getUserMediaSupported() {
