@@ -8,9 +8,7 @@ function getUserMediaSupported() {
       navigator.mediaDevices.getUserMedia);
   }
   
-  // If webcam supported, add event listener to button for when user
-  // wants to activate it to call enableCam function which we will 
-  // define in the next step.
+  // If webcam supported, add event listener to button
   if (getUserMediaSupported()) {
     enableWebcamButton.addEventListener('click', enableCam);
   } else {
@@ -39,20 +37,19 @@ function enableCam(event) {
     });
   }
 
-// Store the resulting model in the global scope of our app.
+// Store the resulting model in the global scope
 var model = undefined;
 
 // Load COCO SD
 cocoSsd.load().then(function (loadedModel) {
   model = loadedModel;
-  // Show demo section now model is ready to use.
   demosSection.classList.remove('invisible');
 });
 
 var children = [];
 
 function predictWebcam() {
-  // Now let's start classifying a frame in the stream.
+  // Start classifying a frame in the stream.
   model.detect(video).then(function (predictions) {
     // Remove any highlighting we did previous frame.
     for (let i = 0; i < children.length; i++) {
@@ -60,10 +57,9 @@ function predictWebcam() {
     }
     children.splice(0);
     
-    // Now lets loop through predictions and draw them to the live view if
-    // they have a high confidence score.
+    // loop through predictions and draw them maybe
     for (let n = 0; n < predictions.length; n++) {
-      // If we are over 66% sure we are sure we classified it right, draw it!
+      // If its confident over 66% then draw a bounding box
       if (predictions[n].score > 0.66) {
         const p = document.createElement('p');
         p.innerText = predictions[n].class  + ' - with ' 
