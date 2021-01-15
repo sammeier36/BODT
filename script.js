@@ -1,6 +1,6 @@
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
-const demosSection = document.getElementById('demos');
+const camSec = document.getElementById('demos');
 const enableWebcamButton = document.getElementById('webcamButton');
 // Check if webcam access is supported.
 function getUserMediaSupported() {
@@ -43,7 +43,7 @@ var model = undefined;
 // Load COCO SD
 cocoSsd.load().then(function (loadedModel) {
   model = loadedModel;
-  demosSection.classList.remove('invisible');
+  camSec.classList.remove('invisible');
 });
 
 var children = [];
